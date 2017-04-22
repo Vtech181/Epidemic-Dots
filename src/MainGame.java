@@ -1,22 +1,23 @@
 import javafx.scene.control.CheckBox;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.awt.event.*;
 
 /**
  * Created by vaibhav on 23/4/17.
  */
-public class MainGame extends Frame{
+public class MainGame extends Frame implements ItemListener{
 
     CheckboxGroup options;
     Checkbox option_5;
     Checkbox option_10;
+
+
+
     Checkbox option_20;
 
     public MainGame(){
-        options=new CheckboxGroup();
+
 
         this.setSize(900,900);
         this.setVisible(true);
@@ -28,8 +29,34 @@ public class MainGame extends Frame{
                 System.exit(0);
             }
         });
-    }
 
+        //setting layout to null
+        this.setLayout(null);
+
+        options=new CheckboxGroup();
+        option_5=new Checkbox("5",options,true);
+        option_10=new Checkbox("10",options,false);
+        option_20=new Checkbox("20",options,false);
+
+        option_5.setBounds(440,350,50,50);
+        option_10.setBounds(440,390,50,50);
+        option_20.setBounds(440,440,50,50);
+
+        this.add(option_5);
+        this.add(option_10);
+        this.add(option_20);
+
+        option_5.addItemListener(this);
+        option_10.addItemListener(this);
+        option_20.addItemListener(this);
+
+    }
+    @Override
+    public void itemStateChanged(ItemEvent itemEvent) {
+
+        Checkbox x=(Checkbox) itemEvent.getSource();
+        System.out.println(x.getLabel());
+    }
     public static void main(String args[])
     {
         MainGame mg=new MainGame();
