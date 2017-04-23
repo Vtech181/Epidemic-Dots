@@ -34,7 +34,7 @@ public class MainGame extends Frame implements ItemListener{
         this.setLayout(null);
 
         options=new CheckboxGroup();
-        option_5=new Checkbox("5",options,true);
+        option_5=new Checkbox("5",options,false);
         option_10=new Checkbox("10",options,false);
         option_20=new Checkbox("20",options,false);
 
@@ -55,10 +55,18 @@ public class MainGame extends Frame implements ItemListener{
     public void itemStateChanged(ItemEvent itemEvent) {
 
         Checkbox x=(Checkbox) itemEvent.getSource();
-        System.out.println(x.getLabel());
+        String size=x.getLabel();
+        new GameScreen(size);
+
     }
     public static void main(String args[])
     {
-        MainGame mg=new MainGame();
+        MainGame mainGame=new MainGame();
+        int i,j;
+        for(i=1;i<6;i++) {
+            for (j = 1; j < 6; j++) {
+                System.out.println("this.add(b"+i+"_"+j+");");
+            }
+        }
     }
 }
