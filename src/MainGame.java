@@ -63,11 +63,15 @@ public class MainGame extends Frame implements ItemListener{
     {
         MainGame mainGame=new MainGame();
         int i,j;
+        int x,y;
         for(i=1;i<21;i++) {
-            for (j = 1; j < 21; j++) {
-                System.out.print("b"+i+"_"+j+",");
+            for (j = 1; j < 21 ; j++) {
+                x=i-1;
+                y=j-1;
+                System.out.println("b"+i+"_"+j+".setLabel("+"getCorrectNumber(multi["+x+"]["+y+"])+"+"getStateasString(color["+x+"]["+y+"]);");
             }
         }
         System.out.print(";");
     }
+
 }
